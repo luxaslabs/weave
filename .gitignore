@@ -67,3 +67,5 @@ test/tls/tls
 test/tls/*.pem
 test/coverage
 test/coverage.*
+terraform.tfstate
+terraform.tfstate.backup
