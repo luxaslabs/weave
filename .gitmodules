@@ -1,6 +1,7 @@
 [submodule "tools"]
 	path = tools
-	url = https://github.com/weaveworks/build-tools
+	url = git@github.com:weaveworks/build-tools.git
+	branch = 2647-testing-mvp
 [submodule "vendor/github.com/vishvananda/netlink"]
 	path = vendor/github.com/vishvananda/netlink
 	url = https://github.com/vishvananda/netlink.git
