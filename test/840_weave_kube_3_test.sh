@@ -2,6 +2,8 @@
 
 . "$(dirname "$0")/config.sh"
 
+cd 
+
 tear_down_kubeadm() {
     for host in $HOSTS; do
         # If we don't stop kubelet, it will restart all the containers we're trying to kill
@@ -26,7 +28,7 @@ run_on $HOST3 "sudo systemctl start kubelet && sudo kubeadm join --token=$TOKEN 
 
 [ -n "$COVERAGE" ] && COVERAGE_ARGS="\\n          env:\\n            - name: EXTRA_ARGS\\n              value: \"-test.coverprofile=/home/weave/cover.prof --\""
 
-sed -e "s%imagePullPolicy: Always%imagePullPolicy: Never$COVERAGE_ARGS%" ../prog/weave-kube/weave-daemonset.yaml | run_on $HOST1 "kubectl apply -f -"
+sed -e "s%imagePullPolicy: Always%imagePullPolicy: Never$COVERAGE_ARGS%" "$(dirname "$0")/../prog/weave-kube/weave-daemonset.yaml" | run_on $HOST1 "kubectl apply -f -"
 
 sleep 5
 
